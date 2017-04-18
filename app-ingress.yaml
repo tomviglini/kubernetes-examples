@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-ingress
+#  gcloud compute addresses create app-load-balanacer --global
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "app-load-balanacer"
+#    kubernetes.io/ingress.class: "gce"
+spec:
+#  tls:
+#  - hosts:
+#    - viglini.org
+#    secretName: cafe-secret
+  rules:
+  - host: nodejs.viglini.org
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: nodejs-service
+          servicePort: 80
