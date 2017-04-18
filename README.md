@@ -1,9 +1,12 @@
 #install gcloud
 
+```bash
 gcloud components install kubectl
+
 gcloud components update
 
 gcloud init
+
 gcloud auth application-default login
 
 gcloud container clusters create test \
@@ -17,12 +20,14 @@ gcloud container clusters create test \
   --max-nodes=1
 
 gcloud config set container/cluster test
-gcloud container clusters get-credentials test
 
+gcloud container clusters get-credentials test
 
 kubectl apply -f limits.yaml
 
 kubectl apply -f nodejs-deployment.yaml
+
 kubectl apply -f nodejs-service.yaml
 
 kubectl apply -f app-ingress.yaml
+```
